@@ -1,0 +1,287 @@
+/* purgecss start ignore */
+.dictionaries.trackYVisible {
+  .dict-item {
+    @apply pr-15;
+
+    &:nth-child(2n) {
+      @apply pl-5 pr-10;
+    }
+  }
+}
+
+.dict-list {
+  @apply flex flex-wrap;
+  @include theme(text, textContrast);
+}
+
+.dict-item {
+  @apply w-1/2 mb-30 pr-10;
+
+  &:nth-child(2n) {
+    @apply pl-10 pr-0;
+  }
+
+  &.enabled .editorActionsBtn.state {
+    @apply text-green;
+  }
+
+  &.disabled .editorActionsBtn.state {
+    @apply text-orange;
+
+    &:hover {
+      @include theme(text, textContrast);
+    }
+  }
+
+  &.expanded {
+    @apply w-full;
+  }
+}
+
+.dict-item_editors {
+  @apply absolute z-50 p-0 m-0 w-full h-full flex items-end list-none;
+
+  .dict-item-inner {
+    @apply relative flex-1 z-10;
+  }
+
+  .dict-item-bg {
+    @apply absolute w-full h-full opacity-75;
+    @include theme(bg, mainSecondary);
+  }
+
+  .dict-item-container {
+    @apply relative w-full flex items-end flex-1 z-10;
+  }
+}
+
+.dict-item-inner {
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+}
+
+.dict-header {
+  @apply flex items-center border-b;
+  @include theme(bg, editorBg);
+  @include theme(border, borderColor);
+  min-height: 30px;
+
+  .custom-select {
+    @apply mr-20 text-10;
+    min-width: 110px;
+  }
+}
+
+.dict-title {
+  @apply flex items-center relative z-10 w-full pl-15 cursor-pointer truncate;
+
+  &:hover .dict-title-edit {
+    @apply block;
+  }
+}
+
+.dict-header-right {
+  @apply flex flex-shrink-0 items-center;
+  width: 200px;
+}
+
+.custom-checkbox {
+  @apply flex-grow min-w-0;
+
+  .custom-select {
+    @apply m-0 uppercase;
+  }
+
+  .custom-select-input {
+    padding-top: 11px;
+    padding-bottom: 9px;
+  }
+
+  .custom-select-visible {
+    @include theme(border, activeMainNavLinkBg);
+  }
+
+  .custom-select-toggle-dropdown {
+    @include theme(text, textContrast);
+  }
+
+  .dropdown {
+    @apply border;
+    @include theme(border, borderColor);
+  }
+
+  .dropdown-item {
+    @apply pt-10;
+    @include theme(border, borderColor);
+    padding-bottom: 7px;
+
+    &:not(:first-child) {
+      @apply border-t;
+    }
+  }
+}
+
+.dict-header-btn {
+  @apply flex justify-center items-center ml-auto;
+  width: 30px;
+  height: 34px;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &:hover {
+    @apply opacity-50;
+  }
+}
+
+.dict-main {
+  @apply flex;
+  min-height: 360px;
+  max-height: 360px;
+
+  .custom-select-input {
+    @apply pl-10;
+    padding-right: 3px;
+  }
+
+  .editorItem {
+    @apply flex-grow;
+    width: 70%;
+  }
+}
+
+.dict-relatedProfiles-wrapper {
+  @apply flex flex-col flex-shrink-0;
+  @include theme(bg, activeMainNavLinkBg);
+  width: 200px;
+}
+
+.dict-relatedProfiles-top-text {
+  @apply block px-10 text-base uppercase border-b;
+  @include theme(border, editorBg);
+  padding-top: 9px;
+  padding-bottom: 8px;
+}
+
+.dict-relatedProfiles-link {
+  @apply flex justify-between items-center w-full px-10;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+
+  &:hover {
+    @include theme(bg, mainSecondary);
+  }
+
+  > svg {
+    @apply relative;
+    top: -1px;
+    margin-right: 2px;
+  }
+}
+
+.dict-relatedProfiles-name {
+  @apply mr-10 truncate;
+}
+
+.dict-category {
+  @apply relative z-20 uppercase;
+  width: 150px;
+
+  .custom-select {
+    @include theme(text, textContrast);
+  }
+
+  .custom-select-visible {
+    @include theme(border, mainSecondary);
+  }
+
+  .dropdown {
+    @apply border;
+    @include theme(border, mainSecondary);
+  }
+
+  .dropdown-item {
+    @include theme(border, mainPrimary);
+
+    &:not(:first-child) {
+      @apply border-t;
+    }
+  }
+}
+
+.pin-to-profile {
+  @apply flex-shrink-0 flex justify-center items-center text-white;
+  @include theme(bg, paramColor);
+  width: 34px;
+  height: 34px;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &:hover {
+    @apply opacity-75;
+  }
+
+  &.pinned {
+    @include theme(bg, categoryColor);
+
+    > svg {
+      transform: rotate(45deg) translateY(1px);
+    }
+  }
+}
+
+.dict-category-label {
+  @apply block mb-5;
+}
+
+.dict-list-scrollbar {
+  @applt h-full !important;
+
+  & > div:first-child {
+    height: calc(100% + 15px) !important;
+    overflow: hidden !important;
+    overflow-y: scroll !important;
+  }
+}
+
+.dict-title-wrapper {
+  @apply flex items-center flex-grow min-w-0 pr-15;
+}
+
+.dict-title-btn {
+  @apply flex items-center relative ml-5 p-5 opacity-50;
+  transition: opacity 0.3s ease;
+
+  will-change: opacity;
+
+  &:hover {
+    @apply opacity-100;
+  }
+}
+
+.dict-title-edit {
+  @apply ml-10 text-sm hidden;
+}
+
+.dict-title-restore {
+  @apply mr-5;
+}
+
+.dict-title-field {
+  @apply absolute block mr-5 pr-15 bg-transparent;
+  @include theme(border, mainSecondary);
+  z-index: -1;
+  padding-left: 14px;
+  outline: none;
+
+  &.active {
+    @apply relative flex-grow min-w-0 border-l;
+    @include theme(bg, mainPrimary);
+    @include theme(border, mainSecondary);
+    z-index: 1;
+    height: 32px;
+  }
+}
+
+/* purgecss end ignore */

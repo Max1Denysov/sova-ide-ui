@@ -1,0 +1,80 @@
+/* purgecss start ignore */
+.utility-replace {
+  @include theme(bg, mainSecondary);
+
+  .toolbar-category-inner {
+    @apply select-text;
+  }
+
+  .custom-input {
+    @apply p-10;
+
+    input {
+      @apply bg-transparent;
+      @include theme(text, toggleColor);
+    }
+
+    span,
+    button {
+      @apply ml-10;
+    }
+  }
+
+  .replace-title {
+    @apply mb-10 text-20 font-bold;
+  }
+
+  .replace-endings {
+    @apply flex items-center flex-wrap p-10 pb-5;
+
+    .replace-item {
+      @include theme(bg, attentionColor);
+    }
+  }
+
+  .replace-words {
+    @apply flex items-center flex-wrap p-10 pb-0;
+
+    .replace-item {
+      @apply cursor-pointer;
+      @include theme(bg, paramColor);
+      transition: opacity 0.3s ease;
+      will-change: opacity;
+
+      &:hover {
+        @apply opacity-75;
+      }
+    }
+
+    + .custom-input {
+      @apply pt-5;
+    }
+  }
+
+  .replace-item {
+    @apply mr-5 mb-5 px-5 normal-case;
+    @include theme(text, textContrast);
+    padding-top: 3px;
+    padding-bottom: 2px;
+  }
+
+  .replace-btn {
+    @apply flex justify-center items-center h-25 mt-20 mb-30 px-10 font-bold whitespace-no-wrap text-theme1-textContrast;
+    @include theme(bg, categoryColor);
+    width: 150px;
+    transition: opacity 0.3s ease;
+    will-change: opacity;
+
+    &:hover {
+      @apply opacity-75;
+    }
+  }
+
+  .replace-result {
+    @apply p-10 leading-normal;
+    @include theme(text, textContrast);
+    @include theme(bg, editorBg);
+  }
+}
+
+/* purgecss end ignore */

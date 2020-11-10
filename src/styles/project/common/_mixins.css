@@ -1,0 +1,9 @@
+@mixin theme($tailwindProp, $colorName, $exception: 0) {
+  @for $i from 1 to $themesCount {
+    @if $i != $exception {
+      .theme$(i) & {
+        @apply $(tailwindProp)-theme$(i)-$(colorName);
+      }
+    }
+  }
+}

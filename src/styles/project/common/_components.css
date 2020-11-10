@@ -1,0 +1,365 @@
+/* purgecss start ignore */
+.toggle {
+  @apply mr-10;
+
+  &.disabled {
+    .toggle-label {
+      @apply cursor-default opacity-50;
+    }
+  }
+
+  .toggle-input {
+    @apply hidden;
+  }
+
+  .toggle-input:checked + label {
+    @apply bg-green;
+
+    &::before {
+      left: calc(100% - 13px);
+    }
+  }
+
+  .toggle-label {
+    @apply relative block w-30 rounded-lg cursor-pointer;
+    @include theme(bg, toggleInactiveColor);
+    height: 14px;
+    transition: background 0.25s ease, opacity 0.25s ease;
+    will-change: background, opacity;
+
+    &::before {
+      @apply absolute w-10 h-10 rounded-full;
+      @include theme(bg, dropdownColor);
+      content: '';
+      top: 50%;
+      left: 3px;
+      transform: translateY(-50%);
+      transition: left 0.3s ease;
+      will-change: left;
+    }
+
+    &:hover {
+      @apply opacity-50;
+    }
+  }
+}
+
+.custom-select {
+  @apply relative;
+  @include theme(text, textContrast);
+
+  &.disabled {
+    .custom-select-input {
+      @apply cursor-not-allowed;
+    }
+  }
+
+  .custom-select-visible {
+    @apply flex border;
+    @include theme(bg, editorBg);
+    @include theme(border, toggleColor);
+  }
+
+  .custom-select-toggle-dropdown {
+    @apply mr-5 px-5;
+    @include theme(text, toggleColor);
+    min-width: 20px;
+    outline: none;
+
+    &.active {
+      transform: translateY(-1px) rotate(180deg);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .custom-select-input {
+    @apply block flex-grow px-10 cursor-pointer;
+    padding-top: 6px;
+    padding-bottom: 4px;
+    outline: none;
+  }
+
+  .custom-select-showed-value {
+    @apply flex-grow px-10 py-5;
+  }
+
+  .dropdown {
+    @apply absolute z-10 w-full border border-b border-t-0;
+    @include theme(bg, dropdownColor);
+    @include theme(border, toggleColor);
+    top: 100%;
+    min-width: fit-content;
+    max-width: none;
+  }
+
+  .dropdown-item {
+    @apply relative flex items-center px-10 pr-25 whitespace-no-wrap cursor-pointer;
+
+    &:hover {
+      @include theme(bg, activeMainNavLinkBg);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &.not-found {
+      @apply opacity-50;
+
+      &:hover {
+        @apply cursor-not-allowed;
+        @apply bg-transparent !important;
+      }
+    }
+
+    &.selected {
+      @apply font-bold;
+
+      > svg {
+        @apply absolute;
+        top: 50%;
+        right: 9px;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  .dropdown-thumb {
+    @apply rounded-xs;
+    @include theme(bg, textContrast);
+  }
+
+  .dropdown-scrollbar {
+    max-width: 228px;
+  }
+
+  .dropdown-track {
+    @apply absolute;
+    width: 2px !important;
+    right: 2px;
+    bottom: 2px;
+    top: 2px;
+    border-radius: 3px;
+  }
+
+  button.custom-select-clear {
+    @apply mr-5;
+    min-width: 13px;
+    align-self: stretch;
+    outline: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.dropdown-multi {
+  @apply flex items-center flex-wrap;
+
+  &.disabled .dropdown-multi-item {
+    @apply cursor-default;
+
+    &:hover {
+      @apply opacity-100;
+    }
+  }
+
+  + .custom-select-visible {
+    @apply mt-5;
+  }
+}
+
+.dropdown-multi-item {
+  @apply mr-5 mb-5 px-5 normal-case cursor-pointer;
+  @include theme(text, textContrast);
+  @include theme(bg, paramColor);
+  padding-top: 3px;
+  padding-bottom: 2px;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &:hover {
+    @apply opacity-75;
+  }
+}
+
+.custom-input {
+  @apply flex items-center;
+
+  input {
+    @apply w-full max-w-full px-10 py-5 border;
+    @include theme(bg, editorBg);
+    @include theme(border, toggleColor);
+    outline: none;
+
+    &[disabled] {
+      @apply cursor-not-allowed;
+    }
+  }
+
+  span,
+  button {
+    @apply ml-15 cursor-pointer;
+    transition: opacity 0.3s ease;
+    will-change: opacity;
+
+    &:hover {
+      @apply opacity-50;
+    }
+  }
+
+  span {
+    @include theme(text, attentionColor);
+  }
+
+  button[type='submit'] {
+    @include theme(text, okColor);
+  }
+}
+
+.common-tooltip {
+  @apply absolute w-full flex items-center justify-center;
+  @include theme(bg, okColor);
+}
+
+.add-new-entity {
+  @apply absolute flex justify-center .text-16 items-center right-0 bottom-0 p-15 m-15 w-50 h-50;
+  @include theme(bg, okColor);
+  cursor: pointer;
+}
+
+.dropdown-track {
+  @apply absolute;
+  width: 2px !important;
+  right: 2px;
+  bottom: 2px;
+  top: 2px;
+  border-radius: 3px;
+}
+
+.dropdown-thumb {
+  @include theme(bg, textContrast);
+}
+
+.ScrollbarsCustom-Content {
+  @apply h-full;
+}
+
+.ScrollbarsCustom-Thumb {
+  @apply relative;
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &:before {
+    @apply absolute w-full h-full bg-black;
+    content: '';
+    top: 0;
+    left: 0;
+    border-radius: 4px;
+  }
+}
+
+.ScrollbarsCustom-Track:hover .ScrollbarsCustom-Thumb {
+  opacity: 0.6;
+}
+
+.customConfirm-container {
+  @apply absolute flex items-center opacity-0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  will-change: transform, opacity;
+
+  &:before {
+    @apply absolute w-10 h-10;
+    content: '';
+  }
+
+  &.is-dark {
+    @include theme(bg, mainPrimary);
+
+    &:before {
+      @include theme(bg, mainPrimary);
+    }
+  }
+
+  &.is-light {
+    @include theme(bg, editorBg);
+
+    &:before {
+      @include theme(bg, editorBg);
+    }
+  }
+
+  &.is-from-top {
+    transform: translate(0, -35%);
+
+    &:before {
+      left: 50%;
+      top: -5px;
+      transform: translateX(-50%) rotate(45deg);
+    }
+  }
+
+  &.is-from-bottom {
+    transform: translate(0, 35%);
+
+    &:before {
+      left: 50%;
+      bottom: -5px;
+      transform: translateX(-50%) rotate(45deg);
+    }
+  }
+
+  &.is-from-left {
+    transform: translate(-35%, 0);
+
+    &:before {
+      left: -5px;
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+    }
+  }
+
+  &.is-from-right {
+    transform: translate(35%, 0);
+
+    &:before {
+      right: -5px;
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+    }
+  }
+
+  &.is-ready {
+    @apply opacity-100;
+    transform: translate(0, 0);
+  }
+}
+
+.customConfirm-btn {
+  @apply relative flex justify-center items-center w-40 h-35;
+
+  &:hover > svg {
+    @apply opacity-50;
+  }
+
+  &.is-reject > svg {
+    @apply text-red;
+  }
+
+  &.is-confirm > svg {
+    @apply relative text-green;
+    top: -1px;
+  }
+
+  > svg {
+    transition: opacity 0.3s ease;
+    will-change: opacity;
+  }
+}
+
+/* purgecss end ignore */

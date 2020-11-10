@@ -1,0 +1,498 @@
+/* purgecss start ignore */
+.menu {
+  @apply relative flex items-center w-full;
+  @include theme(bg, mainSecondary);
+  z-index: 1;
+  min-height: 70px;
+}
+
+.menu-logo-link {
+  @apply flex-shrink-0 flex items-center justify-center border-b cursor-pointer;
+  @include theme(bg, mainPrimary);
+  @include theme(border, mainSecondary);
+  align-self: stretch;
+  width: 70px;
+  height: 70px;
+
+  &:hover {
+    > span,
+    > span:before,
+    > span:after {
+      @include theme(bg, okColor);
+      transition: transform 0.3s ease, background 0.3s ease;
+      transition-delay: 0s;
+    }
+  }
+
+  &.active > span {
+    transform: translateX(6px);
+
+    &:before {
+      transform: translate(-6px, -2px);
+    }
+
+    &:after {
+      transform: translate(-6px, 2px);
+    }
+  }
+
+  &.utility > span {
+    @apply bg-transparent !important;
+    transition-delay: 0s;
+
+    &:before {
+      @include theme(bg, categoryColor);
+      transform: translateY(9px) rotate(45deg);
+    }
+
+    &:after {
+      @include theme(bg, categoryColor);
+      transform: translateY(-9px) rotate(-45deg);
+    }
+  }
+
+  &.active.utility > span {
+    &:before {
+      transform: translate(-6px, 9px) rotate(45deg);
+    }
+
+    &:after {
+      transform: translate(-6px, -9px) rotate(-45deg);
+    }
+  }
+
+  > span {
+    @apply relative w-25;
+    @include theme(bg, miscPrimary);
+    height: 3px;
+    transition: transform 0.3s ease, background 0.7s ease 0.2s;
+    will-change: transform, background;
+
+    &:before,
+    &:after {
+      @apply absolute w-25;
+      @include theme(bg, miscPrimary);
+      content: '';
+      left: 0;
+      height: 3px;
+      transition: transform 0.3s ease, background 0.7s ease 0.2s;
+      will-change: transform, background;
+    }
+
+    &:before {
+      top: -9px;
+    }
+
+    &:after {
+      bottom: -9px;
+    }
+  }
+}
+
+.menu-logo {
+  @apply flex justify-center items-center flex-shrink-0 w-70 h-55 pt-5 pb-5;
+
+  > svg {
+    @apply max-w-full max-h-full;
+  }
+}
+
+.main-nav {
+  width: fit-content;
+}
+
+.navbar {
+  @apply flex;
+}
+
+.navbar-item {
+  @apply relative;
+}
+
+.navbar-link {
+  @apply block px-10;
+  @include theme(text, miscPrimary);
+  padding-top: 9px;
+  padding-bottom: 9px;
+
+  &.active {
+    @include theme(text, textContrast);
+    @include theme(bg, activeMainNavLinkBg);
+  }
+
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    @include theme(text, textContrast);
+    @include theme(bg, activeMainNavLinkBg);
+  }
+}
+
+.subnav-dropdown {
+  @apply absolute;
+  @include theme(bg, activeMainNavLinkBg);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+  top: 100%;
+  min-width: 200px;
+
+  &.quick-settings {
+  }
+}
+
+.subnav {
+  @apply py-5;
+}
+
+.subnav > .subnav-item {
+  @apply relative;
+
+  &:first-child {
+    border-top: none;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    bottom: 0;
+    height: 1px;
+    width: calc(100% - 20px);
+    margin: 5px auto;
+    box-shadow: inset 1px 1px 0 0 rgba(0, 0, 0, 0.05), inset -1px -1px 0 0 hsla(0, 0%, 100%, 0.1);
+  }
+
+  &:last-child {
+    border-bottom: none;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  &:hover .subnav-options {
+    @apply block;
+  }
+}
+
+.subnav-link {
+  @apply flex justify-between items-center w-full px-10 text-left whitespace-no-wrap cursor-pointer border-b-0;
+  @include theme(text, textContrast);
+  padding-top: 6px;
+  padding-bottom: 4px;
+
+  &:hover {
+    @apply text-theme1-textContrast;
+    @include theme(bg, miscPrimary);
+  }
+
+  &.selected {
+    @apply cursor-default;
+  }
+
+  > svg {
+    @apply relative ml-10;
+    top: -1px;
+  }
+}
+
+.subnav-options {
+  @apply absolute hidden;
+  @include theme(bg, activeMainNavLinkBg);
+  top: -5px;
+  left: 100%;
+  min-width: 100px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.menu-panel {
+  @apply flex items-center;
+  @include theme(bg, mainSecondary);
+
+  .dot-loader {
+    @apply m-0 pl-10 border;
+    @include theme(border, paramColor);
+    width: 300px;
+    height: 27px;
+    transform: none;
+
+    .dot {
+      margin: 3px 5px;
+    }
+  }
+
+  .custom-select {
+    @apply uppercase;
+    width: 300px;
+
+    .custom-select-visible,
+    .dropdown {
+      @include theme(bg, mainSecondary);
+    }
+
+    .custom-select-input {
+      @apply font-bold;
+    }
+
+    .ScrollbarsCustom-Thumb:before {
+      @include theme(bg, textContrast);
+    }
+  }
+}
+
+.menu-bar-visible {
+  @apply flex min-w-full w-full border;
+  @include theme(border, menuSearchColor);
+}
+
+.menu-select .menu-bar-visible {
+  @apply flex-grow;
+  @include theme(border, paramColor);
+  min-width: 273px;
+}
+
+.menu-select {
+  @apply relative flex;
+  @include theme(text, paramColor);
+  width: 300px;
+
+  .menu-select-add-profile {
+    @apply inline-block flex-shrink-0 text-13 border;
+    @include theme(border, paramColor);
+    @include theme(bg, paramColor);
+    color: white;
+    width: 27px;
+    height: 27px;
+    will-change: opacity;
+    transition: opacity ease-in-out 0.35s;
+
+    &:hover {
+      opacity: 0.75;
+    }
+
+    &.active {
+      @apply relative;
+      right: 28px;
+
+      &.cancel {
+        @apply z-10;
+      }
+    }
+  }
+
+  .menu-select-add-profile-input {
+    @apply absolute w-full py-5 pr-60;
+    height: 27px;
+    border: 1px solid;
+    text-transform: initial;
+  }
+
+  .dropdown-thumb {
+    @include theme(bg, textContrast);
+  }
+
+  .dropdown {
+    @include theme(bg, dropdownColor);
+    @include theme(border, paramColor);
+    @apply z-10;
+    border-top: none;
+  }
+
+  .dropdown-item {
+    min-height: 25px;
+
+    &:hover {
+      @apply text-theme1-textContrast;
+      @include theme(bg, paramColor);
+    }
+
+    &.active {
+      @include theme(bg, paramColor);
+      @include theme(text, textContrast);
+    }
+
+    &.selected {
+      @apply pr-25 font-bold cursor-default;
+
+      > svg {
+        @apply absolute;
+        top: 50%;
+        right: 9px;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  .ScrollbarsCustom-Thumb:before {
+    @include theme(bg, paramColor);
+  }
+}
+
+.menu-select-toggle-dropdown {
+  @apply flex justify-center items-center px-10;
+  min-width: 20px;
+  outline: none;
+
+  &.active {
+    transform: translateY(-1px) rotate(180deg);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  > svg {
+    @apply relative;
+    top: -1px;
+  }
+}
+
+.menu-select-input {
+  @apply block flex-grow px-10 py-5 font-bold outline-none;
+  @include theme(bg, mainSecondary);
+  width: 150px;
+
+  &::placeholder {
+    @apply font-normal normal-case;
+    opacity: 0.3;
+    will-change: opacity;
+    transition: opacity 0.3s;
+  }
+
+  &:hover::placeholder {
+    @apply opacity-50;
+  }
+}
+
+.menu-select-showed-value {
+  @apply flex-grow px-10 py-5;
+}
+
+.dropdown {
+  @apply absolute w-full border;
+  top: 100%;
+  max-width: 300px;
+}
+
+.dropdown-item {
+  @apply flex items-center px-10 truncate cursor-pointer;
+
+  &:focus {
+    @apply outline-none;
+  }
+
+  &.not-found {
+    @apply opacity-50;
+    min-height: 25px;
+
+    &:hover {
+      @apply cursor-not-allowed;
+      @apply bg-transparent !important;
+    }
+  }
+
+  &.required {
+    &:hover {
+      @apply cursor-default;
+    }
+  }
+
+  &.divided {
+    @apply border-t;
+    @include theme(border, menuSearchColor);
+  }
+
+  img {
+    @apply max-w-full max-h-full mx-5;
+  }
+}
+
+.dropdown-thumb {
+  border-radius: 3px;
+}
+
+.dropdown-scrollbar {
+  > div:first-child {
+    @apply max-h-full overflow-x-hidden !important;
+  }
+}
+
+.dropdown-track {
+  @apply absolute;
+  width: 2px !important;
+  right: 2px;
+  bottom: 2px;
+  top: 2px;
+  border-radius: 3px;
+}
+
+button.menu-select-clear {
+  @apply flex justify-center items-center mr-5;
+  min-width: 13px;
+  align-self: stretch;
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.filters {
+  @apply flex items-center;
+}
+
+.filters-item {
+  @include theme(text, attentionColor);
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.menu-compilation-panel {
+  @apply flex justify-between items-center ml-auto pr-15;
+}
+
+.menu-compilation-btn {
+  @apply flex items-center ml-10 px-10 font-bold whitespace-no-wrap text-theme1-textContrast;
+  @include theme(bg, categoryColor);
+  height: 27px;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &:hover {
+    @apply opacity-75;
+  }
+
+  &.show-dialogs {
+    @apply justify-center w-30 p-0 text-base;
+    height: 27px;
+  }
+}
+
+.menu-panel-container {
+  @apply flex items-center;
+}
+
+.menu-compilation-info {
+  @apply justify-between flex items-center ml-auto mr-15;
+}
+
+.menu-compilation-wrapper {
+  @apply flex text-theme1-okColor;
+  @include theme(text, miscPrimary, 1);
+}
+
+.menu-compilation-title {
+  margin-left: 7px;
+}
+
+.menu-compilation-text {
+  margin-left: 7px;
+}
+
+.menu-compilation-reload {
+  @apply relative flex justify-center items-center;
+  top: -1px;
+  margin-left: 7px;
+}
+
+/* purgecss end ignore */

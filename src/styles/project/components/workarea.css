@@ -1,0 +1,23 @@
+/* purgecss start ignore */
+.workarea {
+  @apply flex flex-grow w-full min-w-0 px-15 pb-15 overflow-hidden;
+  @include theme(bg, mainPrimary);
+  @include theme(text, textContrast);
+}
+
+.templatesFrame {
+  @apply flex flex-grow flex-row min-w-0 h-full;
+}
+
+.settingsFrame {
+  @apply flex flex-col flex-grow min-w-0 h-full pt-30;
+}
+
+.compilationFrame {
+  @apply flex flex-col flex-grow min-w-0 h-full pt-20;
+}
+
+.dictionariesFrame {
+  @apply flex flex-col flex-grow min-w-0 h-full pt-30;
+}
+/* purgecss end ignore */

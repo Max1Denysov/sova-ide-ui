@@ -1,0 +1,114 @@
+/* purgecss start ignore */
+.App {
+  @apply flex flex-col h-screen;
+
+  &.no-animation {
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
+  &.font-alegreyasans {
+    font-family: Alegreya Sans, Arial, sans-serif;
+
+    input,
+    textarea,
+    button {
+      font-family: Alegreya Sans, Arial, sans-serif;
+    }
+  }
+
+  &.font-arimo {
+    font-family: Arimo, Arial, sans-serif;
+
+    input,
+    textarea,
+    button {
+      font-family: Arimo, Arial, sans-serif;
+    }
+  }
+
+  &.font-cuprum {
+    font-family: Cuprum, Arial, sans-serif;
+
+    input,
+    textarea,
+    button {
+      font-family: Cuprum, Arial, sans-serif;
+    }
+  }
+
+  &.font-firasans {
+    font-family: Fira Sans, Arial, sans-serif;
+
+    input,
+    textarea,
+    button {
+      font-family: Fira Sans, Arial, sans-serif;
+    }
+  }
+
+  &.font-montserrat {
+    font-family: Montserrat, Arial, sans-serif;
+
+    input,
+    textarea,
+    button {
+      font-family: Montserrat, Arial, sans-serif;
+    }
+  }
+
+  &.font-notosans {
+    font-family: Noto Sans, Arial, sans-serif;
+
+    input,
+    textarea,
+    button {
+      font-family: Noto Sans, Arial, sans-serif;
+    }
+  }
+
+  &.font-nunito {
+    font-family: Nunito, Arial, sans-serif;
+
+    input,
+    textarea,
+    button {
+      font-family: Nunito, Arial, sans-serif;
+    }
+  }
+
+  &.font-roboto {
+    font-family: Roboto, Arial, sans-serif;
+
+    input,
+    textarea,
+    button {
+      font-family: Roboto, Arial, sans-serif;
+    }
+  }
+
+  &.font-rubik {
+    font-family: Rubik, Arial, sans-serif;
+
+    input,
+    textarea,
+    button {
+      font-family: Rubik, Arial, sans-serif;
+    }
+  }
+
+  &.font-ubuntu {
+    font-family: Ubuntu, Arial, sans-serif;
+
+    input,
+    textarea,
+    button {
+      font-family: Ubuntu, Arial, sans-serif;
+    }
+  }
+}
+/* purgecss end ignore */

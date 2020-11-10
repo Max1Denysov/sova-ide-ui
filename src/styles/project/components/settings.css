@@ -1,0 +1,106 @@
+/* purgecss start ignore */
+.settings-list-wrapper.trackYVisible .settings-list {
+  @apply pr-10;
+}
+
+.settings-list.quick-settings {
+  .settings-item-params {
+    @apply p-0;
+  }
+
+  .settings-params-item {
+    @apply flex-col items-start;
+
+    &:not(:last-child) {
+      @apply mb-15;
+    }
+  }
+
+  .settings-param-name {
+    @apply mr-0 mb-5;
+  }
+}
+
+.settings-list-item {
+  @apply mb-15;
+  @include theme(bg, editorBg);
+
+  &:last-child {
+    @apply mb-0;
+  }
+}
+
+.settings-item-header {
+  @apply p-15 border-b;
+  @include theme(border, mainPrimary);
+}
+
+.settings-item-title {
+  @apply text-xl font-bold;
+}
+
+.settings-item-subtitle {
+  @apply mt-5;
+}
+
+.settings-item-params {
+  @apply p-15;
+}
+
+.settings-params-item {
+  @apply flex items-center mb-25;
+  min-height: 29px;
+
+  &:last-child {
+    @apply mb-0;
+  }
+}
+
+.settings-param-name {
+  @apply flex-grow mr-15;
+  @include theme(text, textContrast);
+  max-width: 450px;
+  transition: color 0.3s ease;
+  will-change: color;
+}
+
+.settings-param-value {
+  @apply w-full;
+  max-width: 350px;
+}
+
+.settings-param-items {
+  @apply flex items-center flex-wrap;
+
+  > span {
+    @apply mr-5 mb-5 px-5;
+    @include theme(text, lightyContrast);
+    @include theme(bg, paramColor);
+    padding-top: 3px;
+    padding-bottom: 2px;
+  }
+}
+
+.settings-avatar {
+  @apply relative flex items-center w-50 h-50;
+
+  img {
+    @apply max-w-full max-h-full;
+  }
+
+  > svg {
+    @apply w-full h-full !important;
+  }
+
+  span {
+    @apply absolute flex justify-center items-center w-full h-full;
+    top: 0;
+    left: 0;
+
+    > svg {
+      @include theme(text, okColor);
+      animation: rotate 1s linear infinite;
+    }
+  }
+}
+/* purgecss end ignore */

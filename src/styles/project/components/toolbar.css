@@ -1,0 +1,1017 @@
+/* purgecss start ignore */
+.toolbar {
+  @apply relative flex h-full;
+  @include theme(bg, mainPrimary);
+  max-width: 370px;
+
+  &:after {
+    @apply absolute z-10 h-full;
+    @include theme(bg, mainSecondary);
+    content: '';
+    top: 0;
+    left: 70px;
+    width: 1px;
+  }
+}
+
+.toolbar-control {
+  @apply flex flex-col justify-between flex-shrink-0 w-full h-full relative z-10 overflow-hidden;
+  @include theme(bg, mainPrimary);
+  min-width: 70px;
+  max-width: 70px;
+}
+
+.toolbar-links-wrapper {
+  @apply mb-15 overflow-x-hidden overflow-y-auto;
+
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    width: 0 !important;
+  }
+}
+
+.draggable-item.dragging {
+  user-select: none;
+  @include theme(bg, mainSecondary);
+  @include theme(border, paramColor);
+  border: 1px solid;
+}
+
+.draggable-item {
+  @apply cursor-pointer !important;
+}
+
+.toolbar-no-filtered-info {
+  @apply h-full flex items-center justify-center p-10 text-center border-t border-b;
+  @include theme(text, miscPrimary);
+  @include theme(border, mainPrimary);
+  min-width: 300px;
+}
+
+.toolbar-search {
+  @apply relative flex items-center flex-shrink-0 pt-10 overflow-hidden;
+  @include theme(bg, mainSecondary);
+
+  + .toolbar-categories.category-dictionaries {
+    @apply pt-10;
+  }
+
+  .toolbar-search-visible {
+    @include theme(text, categoryColor);
+    @include theme(border, categoryColor);
+    @include theme(bg, dropdownColor);
+    min-width: 260px;
+  }
+}
+
+.toolbar-search-input {
+  @apply inline-block flex-grow p-5 px-10;
+  @include theme(text, categoryColor);
+  background: transparent;
+  outline: none;
+
+  &::placeholder {
+    @apply opacity-50;
+    transition: opacity 0.3s ease;
+    will-change: opacity;
+  }
+
+  &:hover {
+    &::placeholder {
+      @apply opacity-75;
+    }
+  }
+
+  &:focus {
+    &::placeholder {
+      @apply opacity-100;
+    }
+  }
+}
+
+.toolbar-search-visible {
+  @apply flex min-w-full w-full border;
+  @include theme(text, categoryColor);
+  @include theme(border, categoryColor);
+  @include theme(bg, dropdownColor);
+  min-width: 260px;
+}
+
+.toolbar-search-filter {
+  @apply self-center mr-10;
+  color: inherit;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &:hover {
+    @apply opacity-75;
+  }
+}
+
+.toolbar-search-clear-btn {
+  @apply inline-block mr-10;
+  @include theme(text, categoryColor);
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &:hover {
+    @apply opacity-75;
+  }
+}
+
+.toolbar-links {
+  @apply flex flex-col items-center flex-shrink-0;
+}
+
+.toolbar-link {
+  @apply flex justify-center items-center w-70 text-base cursor-pointer;
+  min-width: 70px;
+  height: 65px;
+
+  &:hover > svg {
+    @include theme(text, toolbarIconColor);
+    transition: color 0.3s ease;
+    transition-delay: 0s;
+  }
+
+  &.active {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+
+    > svg {
+      @include theme(text, toolbarIconColor);
+    }
+  }
+
+  > svg {
+    @include theme(text, miscPrimary);
+    transition: color 0.7s ease;
+    transition-delay: 0.2s;
+    will-change: color;
+  }
+}
+
+.toolbar-profile {
+  @apply relative flex flex-col items-center flex-shrink-0;
+
+  &:before {
+    @apply absolute z-10 w-full;
+    @include theme(bg, mainPrimary);
+    content: '';
+    bottom: 0;
+    left: 0;
+    height: calc(100% - 10px);
+  }
+
+  .toggle {
+    @apply m-0;
+  }
+}
+
+.toolbar-avatar {
+  @apply relative z-20 flex justify-center items-center w-40 h-40 mx-auto my-15 rounded-full overflow-hidden;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &:hover {
+    @apply opacity-75;
+  }
+
+  > img {
+    @apply max-w-full;
+  }
+
+  > svg {
+    @apply w-full h-full max-w-full max-h-full;
+    @include theme(text, textContrast);
+  }
+}
+
+.toolbar-menu {
+  @apply absolute flex flex-col items-center flex-shrink-0;
+  @include theme(bg, editorBg);
+  bottom: 70px;
+  left: 10px;
+
+  &:before {
+    @apply absolute w-10 h-10;
+    @include theme(bg, editorBg);
+    content: '';
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  li {
+    @apply flex-shrink-0 w-50 h-50;
+
+    &:hover .toolbar-menu-link {
+      @include theme(text, paramColor);
+    }
+  }
+}
+
+.toolbar-menu-link {
+  @apply flex justify-center items-center w-full h-full text-base;
+  @include theme(text, miscPrimary);
+  transition: color 0.3s ease;
+  will-change: color;
+
+  &.quick-link {
+    @apply relative;
+
+    > small {
+      @apply absolute;
+      top: calc(50% - 5px);
+      right: 9px;
+    }
+  }
+}
+
+.toolbar-quick-settings {
+  @apply absolute z-50 p-10 pl-20 opacity-0 invisible;
+  @include theme(text, textContrast);
+  @include theme(bg, editorBg);
+  bottom: 70px;
+  left: 60px;
+  width: 310px;
+  height: 150px;
+  transition: opacity 0.5s ease, height 0.5s ease;
+  will-change: opacity, height;
+
+  &:before {
+    @apply absolute w-10 h-full;
+    @include theme(bg, mainPrimary);
+    content: '';
+    top: 0;
+    left: 0;
+  }
+
+  &.active {
+    @apply opacity-100 visible;
+
+    &:hover {
+      height: 350px;
+    }
+  }
+}
+
+.toolbar-content {
+  @apply relative z-40 flex flex-col flex-grow h-full overflow-x-hidden overflow-y-auto;
+  @include theme(bg, mainPrimary);
+  max-width: 300px;
+}
+
+.toolbar-content-wrapper {
+  @apply flex flex-col flex-grow h-full pb-15;
+  @apply overflow-hidden !important;
+  max-width: 300px;
+}
+
+.toolbar-categories-wrapper {
+  @apply flex-grow;
+}
+
+.toolbar-categories {
+  @apply flex flex-col h-full;
+  min-width: 300px;
+
+  &.category-dictionaries {
+    @apply relative;
+    @include theme(bg, mainSecondary);
+    height: calc(100% - 25px);
+
+    .toolbar-category {
+      @apply border-t;
+      @include theme(border, mainSecondary);
+
+      &:last-child {
+        @apply border-b;
+      }
+
+      &.expanded {
+        @apply p-0;
+        flex: 1;
+      }
+
+      + .dot-loader {
+        @apply absolute z-10 flex items-center w-full m-0 pl-10 pb-15;
+        @include theme(bg, mainSecondary);
+        left: 0;
+        bottom: -25px;
+        height: 24px;
+        transform: none;
+
+        .dot {
+          @apply my-0;
+        }
+      }
+    }
+
+    .toolbar-files {
+      @apply pb-5;
+    }
+
+    .toolbar-files-header {
+      @apply border-t-0;
+      @include theme(border, mainPrimary);
+    }
+
+    .dropdown-scrollbar {
+      height: calc(100% - 41px) !important;
+    }
+  }
+}
+
+.toolbar-category {
+  @apply flex flex-col min-h-0;
+
+  &.expanded {
+    @apply flex-grow min-h-0;
+  }
+
+  &.active {
+    @apply flex-grow;
+  }
+}
+
+.toolbar-block-selector {
+  @apply flex justify-between;
+}
+
+.toolbar-category-arrow {
+  transition: none !important;
+
+  &_dictionary {
+    @include theme(text, attentionColor);
+  }
+
+  &.up {
+    transform: rotateX(180deg);
+  }
+}
+
+.toolbar-category-toggle {
+  @apply flex-grow flex items-center px-10 font-bold uppercase whitespace-no-wrap border-l cursor-pointer;
+  @include theme(text, miscPrimary);
+  @include theme(bg, mainPrimary);
+  @include theme(border, mainSecondary);
+  min-height: 30px;
+  transition: color 0.3s ease;
+  will-change: color;
+
+  &:last-child {
+    @apply border-r;
+  }
+
+  &:hover,
+  &.active {
+    @include theme(text, categoryColor);
+  }
+
+  &:not(.active).with-btn:hover {
+    @include theme(text, miscPrimary);
+  }
+
+  &.active {
+    @apply cursor-default;
+    @include theme(text, textContrast);
+
+    > svg {
+      transform: rotate(42deg) translateX(2px) translateY(1px);
+    }
+  }
+
+  > svg {
+    transition: transform 0.3s ease;
+    will-change: transform;
+  }
+
+  > button {
+    @apply ml-auto;
+    transition: color 0.3s ease;
+    will-change: color;
+  }
+
+  &_inner {
+    @apply justify-between border-r cursor-pointer font-bold;
+    @include theme(bg, mainPrimary);
+    @include theme(text, attentionColor);
+    min-height: 33px;
+    transition: opacity 0.3s ease;
+    will-change: opacity;
+
+    &:hover {
+      @apply opacity-75;
+      @include theme(text, attentionColor);
+    }
+  }
+
+  &_tab {
+    @apply flex-grow-0 justify-center p-0 text-md;
+    width: 40%;
+
+    &:hover,
+    &.active {
+      @include theme(text, categoryColor);
+    }
+  }
+
+  &_btn {
+    @apply flex-grow-0 justify-center p-0;
+    width: 10%;
+
+    &:hover,
+    &.active {
+      @apply cursor-pointer;
+      @include theme(text, categoryColor);
+
+      > svg {
+        transform: none;
+      }
+    }
+  }
+
+  &_save {
+    @apply flex-grow-0 justify-center p-0;
+    width: 10%;
+
+    &:hover,
+    &.active {
+      @apply cursor-pointer;
+      @include theme(text, okColor);
+
+      > svg {
+        transform: none;
+      }
+    }
+  }
+
+  &_copy {
+    @apply flex-grow-0 justify-center p-0;
+    width: 10%;
+
+    &:hover {
+      @apply cursor-pointer;
+      @include theme(text, paramColor);
+
+      > svg {
+        transform: none;
+      }
+    }
+
+    &.active {
+      @include theme(text, okColor);
+
+      &:hover {
+        @apply cursor-default;
+        @include theme(text, okColor);
+      }
+
+      > svg {
+        transform: none;
+      }
+    }
+  }
+}
+
+.toolbar-category-btn {
+  @apply ml-auto;
+
+  &:hover,
+  &.active {
+    @include theme(text, textContrast);
+  }
+}
+
+.toolbar-category-inner {
+  @apply flex flex-col flex-grow min-h-0 overflow-hidden;
+  @include theme(bg, mainSecondary);
+  user-select: none;
+}
+
+.toolbar-actions {
+  @apply relative flex-shrink-0 flex justify-around items-center border-t border-b;
+  @include theme(bg, mainSecondary);
+  @include theme(border, mainPrimary);
+  min-width: 300px;
+
+  &:first-child {
+    @apply border-t-0;
+  }
+
+  &:last-child {
+    @apply mt-auto border-b-0;
+  }
+
+  & + .toolbar-actions {
+    @apply border-t-0;
+  }
+
+  &.input .toolbar-actions-form {
+    @apply visible opacity-100;
+  }
+
+  &.dicts-actions {
+    @apply border-t;
+  }
+
+  input[type='file'] {
+    @apply hidden;
+  }
+}
+
+.toolbar-actions-form {
+  @apply absolute z-10 w-full h-full invisible opacity-0;
+  top: 0;
+  left: 0;
+
+  input {
+    @apply border w-full h-full pl-10 pr-65 outline-none;
+    @include theme(text, okColor);
+    @include theme(bg, mainSecondary);
+    @include theme(border, okColor);
+
+    &::placeholder {
+      opacity: 0.3;
+      will-change: opacity;
+      transition: opacity 0.3s;
+    }
+
+    &:hover::placeholder {
+      opacity: 0.5;
+    }
+  }
+
+  button {
+    @apply absolute z-10 flex justify-center items-center h-25 cursor-pointer;
+    @include theme(bg, okColor);
+    top: 0;
+    width: 27px;
+    color: #fff;
+    transition: opacity 0.3s ease;
+    will-change: opacity;
+
+    &:hover {
+      @apply opacity-75;
+    }
+  }
+
+  button[type='button'] {
+    right: 28px;
+  }
+
+  button[type='submit'] {
+    right: 0;
+  }
+}
+
+.toolbar-actions-btn-wrapper {
+  @apply relative flex justify-center items-center flex-grow flex-shrink-0;
+}
+
+.toolbar-actions-btn {
+  @apply flex justify-center items-center flex-grow flex-shrink-0 h-25;
+  @include theme(text, miscPrimary);
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &:disabled {
+    cursor: not-allowed;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &.green {
+    @apply text-green;
+  }
+
+  &.yellow {
+    @apply text-orange;
+  }
+
+  &.red {
+    @apply text-red;
+  }
+
+  &.purple {
+    @include theme(text, categoryColor);
+  }
+
+  &.cancel {
+    > svg {
+      font-size: 1.7em;
+    }
+  }
+
+  &:hover {
+    @apply opacity-50;
+  }
+}
+
+.toolbar-files-header {
+  @apply flex items-center px-10 border-b;
+  @include theme(text, textContrast);
+  @include theme(border, borderColor);
+  min-height: 35px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-bottom-width: 0.5px;
+
+  .toolbar-file-sort {
+    @apply text-base;
+  }
+}
+
+.toolbar-file-state {
+  @apply relative flex justify-center items-center flex-shrink-0;
+  width: 12px;
+  height: 12px;
+  margin-right: 7px;
+  transition: color 0.3s ease;
+  will-change: color;
+
+  &:hover > svg {
+    &:first-child {
+      @apply opacity-0;
+    }
+
+    &:last-child {
+      @apply opacity-100;
+    }
+  }
+
+  &.enabled {
+    @apply text-green;
+  }
+
+  &.disabled {
+    @apply text-orange;
+  }
+
+  > svg {
+    @apply absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+    will-change: opacity;
+
+    &:first-child {
+      @apply opacity-100;
+    }
+
+    &:last-child {
+      @apply opacity-0;
+    }
+  }
+}
+
+.toolbar-file-sort {
+  @apply relative pr-5 cursor-pointer whitespace-no-wrap;
+  @include theme(text, miscPrimary);
+  transition: color 0.3s ease;
+  will-change: color;
+
+  &:hover,
+  &.active {
+    @include theme(text, textContrast);
+  }
+
+  &.sort-title,
+  &.sort-name {
+    @apply mr-auto;
+  }
+
+  &.sort-date {
+    @apply flex-shrink-0 w-60 ml-10 text-center;
+  }
+
+  &.sort-count {
+    @apply flex-shrink-0 w-45 text-right;
+    margin-left: 14px;
+  }
+
+  &.sort-username {
+    @apply flex-shrink-0 w-80 ml-20 text-right;
+  }
+
+  > svg {
+    @apply absolute;
+    top: 1px;
+    right: -6px;
+  }
+}
+
+.toolbar-files-wrapper {
+  @apply flex-grow;
+}
+
+.toolbar-files {
+  @apply h-full py-10;
+  min-height: 20px;
+
+  &.multiple .toolbar-file-toggle.active {
+    @include theme(text, miscPrimary);
+  }
+
+  &.multiple .toolbar-file-select.checked + .toolbar-file-toggle.active {
+    @include theme(text, okColor);
+  }
+
+  &_templates {
+    @apply flex-grow min-h-0;
+  }
+}
+
+.toolbar-file-header {
+  @apply flex items-center px-10;
+
+  &.is-hidden {
+    span,
+    .toolbar-file-select,
+    .toolbar-file-state,
+    .toolbar-file-toggle {
+      @apply text-gray cursor-not-allowed;
+
+      &:hover {
+        @apply text-gray;
+      }
+    }
+
+    .toolbar-file-state {
+      &:hover > svg {
+        &:first-child {
+          @apply opacity-100;
+        }
+
+        &:last-child {
+          @apply opacity-0;
+        }
+      }
+    }
+  }
+}
+
+.toolbar-file-select {
+  @apply flex justify-center items-center flex-shrink-0;
+  @include theme(text, miscPrimary);
+  min-height: 20px;
+  margin-right: 7px;
+
+  transition: color 0.3s ease;
+  will-change: color;
+
+  &:hover {
+    @include theme(text, textContrast);
+  }
+
+  &.checked {
+    @include theme(text, okColor);
+
+    ~ .toolbar-file-toggle {
+      @include theme(text, okColor);
+    }
+  }
+}
+
+.toolbar-file-toggle {
+  @apply flex items-center flex-grow w-full min-w-0 cursor-pointer;
+  @include theme(text, miscSecondary);
+  min-height: 20px;
+  transition: color 0.3s ease;
+  will-change: color;
+  -webkit-user-drag: auto;
+  -webkit-appearance: none;
+
+  &:hover,
+  &.opened,
+  &.active {
+    @include theme(text, textContrast);
+  }
+
+  &.collapsed .toolbar-file-caret {
+    transform: rotate(42deg) translateX(2px) translateY(1px);
+  }
+
+  &.no-pinned .toolbar-file-caret {
+    @apply opacity-0;
+  }
+
+  &.is-user .toolbar-file-icon {
+    margin-right: 12px;
+  }
+}
+
+.toolbar-file {
+  @apply overflow-hidden;
+
+  &.opened,
+  &.changing {
+    @apply border-r;
+    @include theme(border, attentionColor);
+    border-right-width: 3px;
+
+    &::after {
+      @apply absolute;
+      z-index: 1;
+      content: '';
+      top: 0;
+      transform: translateX(100%);
+      width: 100%;
+      height: 100%;
+    }
+
+    .toolbar-file-header {
+      padding-right: 7px;
+    }
+
+    .toolbar-file-name,
+    .toolbar-title-restore,
+    .toolbar-title-check,
+    .toolbar-file-icon,
+    .toolbar-file-select {
+      @include theme(text, attentionColor);
+    }
+  }
+
+  .toolbar-title-btn {
+    @apply m-0;
+  }
+}
+
+.toolbar-file-title-form {
+  @apply w-full;
+}
+
+.toolbar-title-btn {
+  @apply flex items-center relative ml-5 p-5 opacity-50;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &:hover {
+    @apply opacity-100;
+  }
+}
+
+.toolbar-title-restore {
+  @apply mr-5;
+}
+
+.toolbar-title-check > svg {
+  @apply relative;
+  top: -1px;
+}
+
+.toolbar-file-caret {
+  @apply flex justify-center items-center mr-5;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+}
+
+.toolbar-file-icon {
+  @apply flex justify-center items-center;
+  margin-right: 7px;
+}
+
+.toolbar-file-name {
+  @apply relative text-left whitespace-no-wrap mr-auto overflow-hidden;
+  user-select: none;
+  text-overflow: ellipsis;
+  left: -1px;
+  width: 200px;
+}
+
+input.toolbar-file-name {
+  @apply block;
+  width: calc(100% - 50px);
+  background: transparent;
+  outline: none;
+}
+
+.toolbar-file-status {
+  @apply mr-15;
+  @include theme(text, warningColor);
+}
+
+.toolbar-file-changed {
+  @apply relative flex-shrink-0 ml-5 text-sm text-center;
+  @include theme(text, paramColor);
+  top: 1px;
+  min-width: 60px;
+}
+
+.toolbar-file-count {
+  @apply relative flex-shrink-0 w-40 ml-15 mr-5 text-sm text-right;
+  @include theme(text, paramColor);
+  top: 1px;
+}
+
+.toolbar-file-username {
+  @apply relative flex-shrink-0 w-80 ml-10 pr-5 text-sm text-right truncate;
+  @include theme(text, paramColor);
+  top: 1px;
+}
+
+.toolbar-file-templates {
+  @apply flex flex-col overflow-hidden;
+}
+
+.toolbar-file-template {
+  @apply relative flex items-center pr-15 border-l border-r cursor-pointer;
+  @include theme(text, miscPrimary);
+  @include theme(border, mainSecondary);
+  min-height: 20px;
+  padding-left: 28px;
+  transition: color 0.3s ease, background 0.3s ease;
+  will-change: color, background;
+
+  &:hover {
+    @include theme(text, textContrast);
+    @include theme(bg, mainPrimary);
+  }
+
+  &.enabled .toolbar-file-template-unpin {
+    @include theme(text, okColor);
+  }
+
+  &.disabled .toolbar-file-template-unpin {
+    @include theme(text, attentionColor);
+  }
+
+  > span {
+    @apply flex-grow min-w-0 truncate;
+  }
+}
+
+.toolbar-file-template-unpin {
+  @apply relative;
+  @include theme(text, paramColor);
+  margin-right: 9px;
+  transform: rotate(45deg);
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &:hover {
+    @apply opacity-50;
+  }
+}
+
+.toolbar-file-template-goto {
+  @apply absolute w-full h-full;
+  top: 0;
+  left: 0;
+}
+
+.toolbar-settings {
+  @apply flex flex-col h-full pb-15;
+  @include theme(bg, mainSecondary);
+  min-width: 300px;
+
+  li:last-child .toolbar-settings-link {
+    @apply border-b;
+  }
+
+  + .toolbar-actions {
+    @apply h-30;
+    @include theme(bg, mainSecondary);
+  }
+}
+
+.toolbar-settings-link {
+  @apply flex items-center h-30 px-10 border-t uppercase;
+  @include theme(text, miscPrimary);
+  @include theme(border, mainPrimary);
+  transition: color 0.3s ease;
+  will-change: color;
+
+  &:hover,
+  &.active {
+    @include theme(text, textContrast);
+  }
+}
+
+.filter-chips {
+  @apply flex flex-wrap justify-end px-10;
+  @include theme(bg, mainSecondary);
+  margin: 0 -5px;
+}
+
+.filter-chips-item {
+  @apply flex mx-5 mt-10 px-10 py-5 text-white;
+  @include theme(bg, categoryColor);
+}
+
+.filter-chips-item-remove {
+  @apply ml-10;
+  will-change: transform;
+  transition: 0.15s linear;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+/* purgecss end ignore */

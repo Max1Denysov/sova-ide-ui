@@ -1,0 +1,31 @@
+/* purgecss start ignore */
+.dot-loader {
+  @apply flex my-20;
+  display: flex;
+  transform: translateY(-50%);
+
+  .dot {
+    @apply m-5;
+    background-color: grey;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+  }
+  .dot {
+    animation: loader 0.8s ease-in-out infinite alternate forwards;
+  }
+
+  .ok {
+    @apply bg-green;
+    animation-delay: 0.2s;
+  }
+  .attention {
+    @apply bg-orange;
+    animation-delay: 0.4s;
+  }
+  .warning {
+    @apply bg-red;
+    animation-delay: 0.6s;
+  }
+}
+/* purgecss end ignore */

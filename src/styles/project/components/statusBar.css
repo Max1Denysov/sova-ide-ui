@@ -1,0 +1,112 @@
+/* purgecss start ignore */
+.statusBar-container {
+  @apply fixed z-50 flex justify-center items-center mr-15 py-10 pr-10 pl-45 text-14 font-bold text-theme1-textContrast;
+  @include theme(bg, paramColor);
+  bottom: 60px;
+  right: 0;
+  min-width: 375px;
+  max-width: 375px;
+  min-height: 60px;
+  box-shadow: 0 5px 6px rgba(0, 0, 0, 0.3), 0 5px 6px rgba(0, 0, 0, 0.3);
+  transition: right 0.7s ease;
+  will-change: right;
+
+  &:before {
+    @apply absolute border-t border-b border-theme1-textContrast;
+    content: '';
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    top: 3px;
+    left: 3px;
+  }
+
+  &.is-hidden {
+    right: -1000px;
+    transition-delay: 0s;
+  }
+
+  &.error {
+    @apply bg-red;
+
+    span {
+      @apply mr-15;
+    }
+  }
+
+  &.warning {
+    @apply bg-orange;
+  }
+
+  &.confirm {
+    @apply justify-around;
+  }
+
+  &.sync {
+    bottom: 8px;
+    min-height: 45px;
+    transition: right 0.7s ease 0.3s;
+
+    span {
+      @apply ml-auto;
+    }
+  }
+
+  span {
+    @apply text-center;
+  }
+
+  .statusBar-buttons {
+    @apply flex flex-col items-center ml-10;
+  }
+
+  .statusBar-btn {
+    @apply flex justify-center items-center cursor-pointer text-theme1-textContrast;
+    width: 26px;
+    height: 26px;
+    transition: opacity 0.3s ease;
+    will-change: opacity;
+
+    &:not(:first-child) {
+      margin-top: 3px;
+    }
+
+    &:hover {
+      @apply opacity-75;
+    }
+
+    > svg {
+      @apply max-w-full;
+    }
+  }
+}
+
+.statusBar-icon {
+  @apply absolute flex justify-center items-center w-35;
+  top: 3px;
+  left: 3px;
+  bottom: 3px;
+
+  &:before {
+    @apply absolute w-full h-full bg-theme1-textContrast opacity-25;
+    content: '';
+    top: 0;
+    left: 0;
+  }
+
+  > svg {
+    @apply relative;
+    font-size: 1.75em;
+  }
+}
+
+.statusBar-hide {
+  @apply flex justify-center items-center ml-auto;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &:hover {
+    @apply opacity-75;
+  }
+}
+
+/* purgecss end ignore */

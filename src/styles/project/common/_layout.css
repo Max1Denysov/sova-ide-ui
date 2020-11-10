@@ -1,0 +1,34 @@
+/* purgecss start ignore */
+body {
+  @apply text-base leading-tight font-normal;
+  min-width: 1280px;
+  font-family: Roboto, Arial, sans-serif;
+
+  > iframe {
+    @apply hidden;
+  }
+}
+
+main {
+  @apply z-0 flex flex-grow overflow-hidden relative;
+  @include theme(bg, mainPrimary);
+
+  &.with-error {
+    .toolbar-no-filtered-info {
+      @apply hidden;
+    }
+  }
+}
+
+input,
+textarea {
+  @apply leading-tight font-normal;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: inherit;
+}
+
+button {
+  @apply outline-none !important;
+  font-family: Roboto, Arial, sans-serif;
+}
+/* purgecss end ignore */

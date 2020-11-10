@@ -1,0 +1,187 @@
+/* purgecss start ignore */
+.loginRoute {
+  @include theme(bg, mainSecondary);
+  @apply flex flex-col h-screen items-center justify-center p-15;
+
+  .loginRoute-login {
+    @apply flex justify-center items-center;
+    @include theme(text, textContrast);
+    @include theme(bg, mainPrimary);
+    @include theme(border, miscPrimary);
+    border: 1px solid;
+    opacity: 0.75;
+    margin-top: 5px;
+    margin-bottom: 35px;
+    text-transform: uppercase;
+    user-select: none;
+    height: 29px;
+    width: 100%;
+    transition: opacity 0.3s;
+    will-change: opacity;
+
+    &:focus,
+    &:hover {
+      opacity: 1;
+    }
+    &:active {
+      opacity: 0.5;
+    }
+  }
+}
+
+.loginRoute-icon,
+.loginRoute-icon-btn {
+  @apply absolute opacity-50;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  transition: opacity 0.3s;
+  will-change: opacity;
+}
+&:hover svg {
+  opacity: 1;
+}
+.loginRoute-icon-btn {
+  @apply flex;
+  right: 30px;
+  &:active {
+    opacity: 1;
+  }
+}
+
+.loginRoute-formgroup {
+  @apply relative mb-15;
+}
+.loginRoute-form-animated {
+  @apply absolute w-full h-full;
+  left: 0;
+}
+.loginRoute-form {
+  @apply relative flex flex-col mb-50 overflow-hidden;
+  height: 170px;
+
+  input {
+    @apply w-full pl-10 pr-25;
+    padding-bottom: 6px;
+    padding-top: 6px;
+    opacity: 0.75;
+    font-size: 12px;
+    background: transparent;
+    border: 1px solid;
+    transition: opacity 0.3s;
+    will-change: opacity;
+
+    &::placeholder {
+      text-transform: uppercase;
+      transition: opacity 0.3s;
+    }
+    &:hover::placeholder {
+      opacity: 1;
+    }
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      border: 1px solid #89ca78;
+      -webkit-text-fill-color: #89ca78;
+      -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+    &[name='username'] {
+      @include theme(border, paramColor);
+      @include theme(text, paramColor);
+      & + svg {
+        @include theme(text, paramColor);
+      }
+    }
+    &[name='password'] {
+      @include theme(border, attentionColor);
+      @include theme(text, attentionColor);
+    }
+  }
+}
+
+.loginRoute-formgroup_password {
+  .loginRoute-eye-btn {
+    display: block;
+    right: 20px;
+  }
+  svg {
+    @include theme(text, attentionColor);
+  }
+}
+
+.loginRoute-container {
+  @apply flex flex-col justify-center h-full;
+  width: 300px;
+  min-height: 565px;
+  max-width: 100%;
+  text-align: center;
+}
+
+.loginRoute-footer {
+  @apply mt-auto text-sm;
+  @include theme(text, miscPrimary);
+  a {
+    transition: opacity 0.3s;
+    will-change: opacity;
+    opacity: 0.75;
+  }
+  a:hover {
+    opacity: 1;
+  }
+  a:active {
+    opacity: 0.25;
+  }
+}
+
+.loginRouter-footer-link {
+  @include theme(text, okColor);
+}
+
+.loginRoute-mainSite-link {
+  @apply inline-block cursor-pointer;
+}
+
+.loginRoute-heading {
+  @apply mt-auto mb-40;
+  @include theme(text, paramColor);
+  font-size: 65px;
+  font-weight: bold;
+  line-height: 1.15;
+}
+
+.loginRoute-restore {
+  @include theme(text, miscPrimary);
+  align-self: center;
+  text-align: center;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.loginRoute-social {
+  @apply flex items-center justify-center my-20;
+}
+
+.loginRoute-social-item {
+  @apply mx-5;
+  a {
+    font-size: 18px;
+  }
+}
+
+.loginRoute-copyright {
+  @apply font-light;
+}
+
+.loginRoute-message-on-forget {
+  @apply text-18 text-center;
+  @include theme(text, miscPrimary);
+}
+/* purgecss end ignore */

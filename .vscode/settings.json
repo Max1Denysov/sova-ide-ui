@@ -1,0 +1,16 @@
+{
+  /*   "files.associations": {
+    "*.css": "postcss"
+  } */
+  "workbench.colorCustomizations": {
+    "titleBar.activeForeground": "#000",
+    "titleBar.inactiveForeground": "#000000CC",
+    "titleBar.activeBackground": "#219653",
+    "titleBar.inactiveBackground": "#219653"
+  },
+
+  "css.validate": false,
+  "stylelint.enable": true,
+  "editor.formatOnSave": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

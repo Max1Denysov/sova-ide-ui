@@ -1,0 +1,291 @@
+/* purgecss start ignore */
+.compilation {
+  @apply flex flex-col flex-grow min-h-0;
+}
+
+.compilation-tasks-title {
+  @apply mb-20 text-20 font-bold;
+}
+
+.compilation-tasks-wrapper {
+  &.trackYVisible {
+    .compilation-tasks {
+      @apply pr-10;
+    }
+  }
+}
+
+.compilation-tasks-item {
+  &:not(:last-child) {
+    @apply mb-15;
+  }
+
+  &.failed {
+    .compilation-tasks-status {
+      @apply bg-red;
+    }
+
+    .compilation-tasks-header:hover:before {
+      @apply bg-red;
+    }
+  }
+
+  &.enqueued,
+  &.working {
+    .compilation-tasks-status {
+      @apply bg-orange;
+    }
+
+    .compilation-tasks-header:hover:before {
+      @apply bg-orange;
+    }
+  }
+
+  &.success {
+    .compilation-tasks-status {
+      @apply bg-green;
+    }
+
+    &.deploy .compilation-tasks-header:before {
+      @apply opacity-50;
+      @apply bg-green;
+    }
+
+    .compilation-tasks-header:hover:before {
+      @apply bg-green;
+      opacity: 0.85;
+    }
+  }
+
+  &.null {
+    .compilation-tasks-status {
+      @include theme(bg, miscSecondary);
+    }
+
+    .compilation-tasks-header:hover:before {
+      @include theme(bg, miscSecondary);
+    }
+  }
+}
+
+.compilation-tasks-header {
+  @apply relative flex items-center h-30;
+  @include theme(bg, mainSecondary);
+
+  &:before {
+    @apply absolute w-full h-full;
+    content: '';
+    top: 0;
+    left: 0;
+    opacity: 0.85;
+    transition: background 0.3s ease, opacity 0.3s ease;
+    will-change: background, opacity;
+  }
+}
+
+.theme4 .compilation-tasks-header {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.compilation-tasks-toggle {
+  @apply flex items-center flex-grow min-w-0 h-full cursor-pointer;
+}
+
+.compilation-tasks-status {
+  @apply relative flex justify-center items-center w-85 h-30 text-13 font-bold uppercase;
+}
+
+.compilation-tasks-info {
+  @apply relative flex items-center flex-grow h-full pl-10;
+
+  b {
+    @apply mx-5;
+  }
+}
+
+.compilation-tasks-inner {
+  @apply flex;
+  @include theme(bg, editorBg);
+}
+
+.compilation-tasks-details {
+  @apply flex-grow min-w-0 p-15;
+
+  p {
+    @apply mb-5;
+
+    &:nth-last-child(2) {
+      @apply mb-10;
+    }
+
+    &:last-child {
+      @apply mb-0 font-bold;
+    }
+
+    &.task-ids {
+      @apply mb-10;
+    }
+
+    &.task-title {
+      @apply mb-10 font-bold;
+    }
+  }
+}
+
+.compilation-error {
+  @apply font-bold;
+  @apply text-red;
+}
+
+.compilation-warning {
+  @apply font-bold;
+  @apply text-orange;
+}
+
+.compilation-ok {
+  @apply font-bold;
+  @apply text-green;
+}
+
+.compilation-param {
+  @apply font-bold;
+  @include theme(text, paramColor);
+}
+
+.compilation-category {
+  @apply font-bold;
+  @include theme(text, categoryColor);
+}
+
+.compilation-tasks-btn {
+  @apply relative flex justify-center items-center mx-10;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &:hover {
+    @apply opacity-75;
+  }
+
+  &.btn-refetch > svg {
+    transform: rotate(90deg);
+  }
+
+  &.btn-deploy > svg {
+    transform: rotateY(180deg);
+  }
+}
+
+.compilation-tasks-messages {
+  @apply flex flex-col;
+  @include theme(bg, activeMainNavLinkBg);
+  width: 350px;
+}
+
+.compilation-messages-title {
+  @apply flex justify-between items-center pl-10 uppercase border-b;
+  @include theme(border, editorBg);
+  padding-right: 8px;
+  padding-top: 9px;
+  padding-bottom: 8px;
+}
+
+.compilation-messages-expand {
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &:hover {
+    @apply opacity-75;
+  }
+}
+
+.compilation-messages-item {
+  &:not(:last-child) {
+    @apply border-b;
+    @include theme(border, miscSecondary);
+  }
+
+  &.opened .compilation-message-toggle > svg {
+    transform: rotate(44deg) translateX(1px) translateY(1px);
+  }
+}
+
+.compilation-message-header {
+  @apply flex;
+}
+
+.compilation-message-toggle {
+  @apply flex flex-grow items-start min-w-0 pl-10 font-bold text-left cursor-pointer;
+  padding-top: 6px;
+  padding-bottom: 4px;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &:hover {
+    @apply opacity-75;
+  }
+
+  > svg {
+    @apply relative mr-5;
+    top: 1px;
+  }
+
+  > span {
+    @apply uppercase;
+    margin-right: 3px;
+  }
+}
+
+.compilation-message-scroll-btn {
+  @apply flex justify-center items-center flex-shrink-0 w-25 ml-5 text-theme1-textContrast;
+  @include theme(bg, okColor);
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &:hover {
+    @apply opacity-75;
+  }
+}
+
+.compilation-message-inner {
+  @apply px-10;
+
+  p {
+    @apply pt-5;
+
+    b {
+      @apply ml-5 font-normal select-all;
+    }
+  }
+}
+
+.compilation-template {
+  @apply mt-5 mb-10;
+}
+
+.compilation-template-title {
+  @apply flex items-center h-30 cursor-pointer;
+  @include theme(bg, mainPrimary);
+  padding-left: 12px;
+
+  &.opened > svg {
+    transform: rotate(44deg) translateX(1px) translateY(1px);
+  }
+
+  > svg {
+    @apply mr-10;
+  }
+
+  > span {
+    @apply mr-auto;
+  }
+
+  .compilation-message-scroll-btn {
+    @apply w-30 h-30;
+  }
+}
+
+.compilation-template-text {
+  @apply p-10;
+  @include theme(bg, editorBg);
+}
+/* purgecss end ignore */

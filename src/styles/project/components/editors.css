@@ -1,0 +1,1413 @@
+/* purgecss start ignore */
+.editors {
+  @apply relative flex flex-col flex-grow max-w-full h-full;
+
+  .editors-add-new {
+    @apply flex justify-center text-14 items-center text-iconColor bg-theme1-okColor;
+    @include theme(bg, menuSearchColor, 1);
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+
+    &:not(:first-child) {
+      margin-left: 1px;
+    }
+
+    &:hover {
+      @apply opacity-75;
+    }
+  }
+}
+
+.workarea-empty-bg {
+  @apply font-black uppercase text-center opacity-75 flex justify-center items-center w-full h-full;
+  @include theme(text, mainSecondary);
+  font-size: 7vh;
+
+  &.with-error {
+    @apply flex-col py-30 opacity-100;
+    padding-right: 105px;
+
+    span {
+      @apply opacity-75;
+    }
+
+    button {
+      @apply my-20 px-15 pt-5 font-bold;
+      @include theme(text, textContrast);
+      @include theme(bg, paramColor);
+      padding-bottom: 3px;
+      transition: opacity 0.3s ease;
+      will-change: opacity;
+
+      &:hover {
+        @apply opacity-75;
+      }
+    }
+
+    .workarea-empty-error {
+      @apply p-20 text-13 normal-case text-left;
+      @include theme(text, textContrast);
+      @include theme(bg, mainSecondary);
+      width: 40vw;
+      height: 50vh;
+    }
+
+    li:not(:first-child) {
+      @apply mt-5;
+    }
+  }
+}
+
+.editors-dict-container {
+  @apply absolute z-20 w-full h-full;
+}
+
+.editorsContent {
+  @apply flex flex-col flex-grow;
+}
+
+.editorsTabs-wrapper {
+  @apply flex items-center flex-shrink-0;
+  min-height: 25px !important;
+
+  .ScrollbarsCustom-Wrapper {
+    bottom: 0 !important;
+  }
+
+  .ScrollbarsCustom-TrackX {
+    height: 6px !important;
+  }
+}
+
+.editorsTitle {
+  @apply pb-15 text-20;
+}
+
+.editorsTabs {
+  @apply flex flex-grow items-center;
+  @include theme(bg, mainPrimary);
+  min-height: 25px;
+}
+
+.editorsTabs-item {
+  @apply relative flex items-center flex-shrink-0 px-10 border-r;
+  @include theme(bg, mainPrimary);
+  @include theme(border, mainSecondary);
+  max-width: 175px;
+  min-height: 30px;
+  opacity: 0.35;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &.active {
+    @apply cursor-default border-l-2 border-r-2 opacity-100;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
+    .editorsTabs-select {
+      @apply cursor-default;
+    }
+  }
+
+  + .editorsTabs-item.active {
+    @apply border-l;
+  }
+
+  &:first-child {
+    @apply border-l;
+  }
+
+  &:last-child.active {
+    @apply border-r;
+  }
+
+  &:hover {
+    @apply opacity-100;
+  }
+
+  &.close-all {
+    @apply flex-shrink-0 opacity-100 shadow-none cursor-pointer;
+    @include theme(bg, mainSecondary);
+
+    &:hover {
+      @apply opacity-50;
+    }
+  }
+
+  > span {
+    @apply flex items-center truncate;
+
+    > svg {
+      @apply mr-10;
+    }
+  }
+}
+
+.editorsTabs-select {
+  @apply absolute w-full h-full cursor-pointer;
+  top: 0;
+  left: 0;
+}
+
+.editorsTabs-close {
+  @apply flex justify-center items-center;
+  width: 12px;
+  margin-left: 8px;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &:hover {
+    @apply opacity-50;
+  }
+}
+
+.editorsTopPanel {
+  @apply flex items-center flex-shrink-0 pl-15 border;
+  @include theme(border, mainSecondary);
+  min-height: 36px;
+
+  + .editorsTopPanel {
+    @apply border-t-0;
+    min-height: 35px;
+  }
+}
+
+.editorContent-error {
+  background-color: #33373d;
+  width: 100%;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+}
+
+.editors-toggle-btn {
+  @apply text-base;
+  @apply text-iconColor;
+  width: 34px;
+  height: 34px;
+  margin-left: 1px;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &:hover {
+    @apply opacity-50;
+  }
+
+  &.expand {
+    @include theme(bg, paramColor);
+  }
+
+  &.filter {
+    @include theme(bg, categoryColor);
+  }
+}
+
+.editorsFilter {
+  @apply relative flex w-full h-full;
+}
+
+.editorsFilter-status {
+  @apply flex items-center flex-shrink-0 mr-auto;
+  .editorsFilter-title {
+    @apply mr-30 font-bold;
+    line-height: 2;
+
+    &.active > span {
+      @apply cursor-pointer;
+      @include theme(border, textContrast);
+
+      &:hover {
+        @apply border-transparent;
+      }
+    }
+
+    > span {
+      @apply border-b border-transparent;
+      transition: border 0.3s ease;
+      will-change: border;
+
+      &:after {
+        content: ':';
+      }
+
+      svg {
+        display: none;
+      }
+    }
+
+    .editorsFilterTitle {
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  .editorsFilter-items-wrapper {
+    @apply flex;
+
+    &.dropdown {
+      @apply hidden;
+    }
+
+    &.opened {
+      @apply absolute z-50 flex-col border;
+      @include theme(bg, dropdownColor);
+      @include theme(border, paramColor);
+      top: 34px;
+      left: -16px;
+
+      > .editorsFilter-item {
+        @apply px-15 py-10 mr-0;
+
+        &:hover {
+          @apply text-theme1-textContrast;
+          @include theme(bg, paramColor);
+        }
+      }
+    }
+  }
+
+  .editorsFilter-item {
+    @apply relative flex items-center mr-30 opacity-50 cursor-pointer;
+    transition: opacity 0.3s ease;
+    will-change: opacity;
+    line-height: 1;
+
+    &:before {
+      @apply relative w-10 h-10 mr-10 border rounded-full;
+      content: '';
+      top: -1px;
+      transition: border 0.3s ease, background 0.3s ease;
+      will-change: border, background;
+      margin-top: 3px;
+    }
+
+    &.active {
+      @apply opacity-100;
+    }
+
+    &.showOk {
+      &:before {
+        @apply border-green;
+      }
+
+      &.active:before {
+        @apply bg-green;
+      }
+    }
+
+    &.showAttention {
+      &:before {
+        @apply border-orange;
+      }
+
+      &.active:before {
+        @apply bg-orange;
+      }
+    }
+
+    &.showWarning {
+      &:before {
+        @apply border-red;
+      }
+
+      &.active:before {
+        @apply bg-red;
+      }
+    }
+  }
+
+  .anchor {
+    display: block;
+  }
+}
+
+.editorsFilter-name {
+  @apply absolute flex justify-end;
+  top: 0;
+  right: 0;
+
+  .toolbar-search {
+    @apply pt-0;
+  }
+
+  .toolbar-search-visible {
+    @apply border;
+    width: 348px;
+    height: 34px;
+    outline: none;
+  }
+
+  .filter-chips-item {
+    margin: 4px;
+  }
+}
+
+.editorsSorting {
+  @apply flex items-center flex-shrink-0 mr-auto;
+
+  .editorsSorting-title {
+    @apply mr-30 font-bold;
+  }
+
+  .editorsSorting-item {
+    @apply relative mr-30 pr-10;
+    @include theme(text, miscPrimary);
+    transition: color 0.3s ease;
+    will-change: color;
+
+    &:hover,
+    &.active {
+      @include theme(text, textContrast);
+    }
+
+    > svg {
+      @apply absolute;
+      top: 1px;
+      right: -1px;
+    }
+  }
+}
+
+.editors-add-template {
+  @apply relative flex items-center ml-auto;
+}
+
+.editors-add-input {
+  @apply absolute;
+  top: 0;
+  right: 68px;
+
+  input {
+    @apply pl-10 pr-25 border;
+    @include theme(text, okColor);
+    @include theme(bg, mainSecondary);
+    @include theme(border, okColor);
+    width: 280px;
+    height: 34px;
+    outline: none;
+
+    &::placeholder {
+      @apply opacity-50;
+      will-change: opacity;
+      transition: opacity 0.3s;
+    }
+
+    &:hover::placeholder {
+      @apply opacity-75;
+    }
+  }
+
+  button {
+    @apply absolute;
+    @include theme(text, okColor);
+    top: 10px;
+    right: 10px;
+  }
+}
+
+.editorsWrapper {
+  @apply flex-grow mt-15;
+
+  &.trackYVisible {
+    .editorsContainer {
+      @apply pr-10;
+    }
+  }
+}
+
+.editorsContainer {
+  @apply flex flex-grow flex-col h-full;
+
+  .editorItem {
+    @apply mb-15;
+
+    &:last-child {
+      @apply mb-0;
+    }
+  }
+}
+
+.theme3 .editorsContainer {
+  .editorItem {
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.theme4 .editorsContainer {
+  .editorItem {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  }
+}
+
+.dict-main .editorUpdates {
+  @apply ml-auto;
+}
+
+.dict-main .editorActions {
+  @apply w-full;
+}
+
+.editor {
+  @apply opacity-75;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
+
+  &:hover {
+    @apply opacity-100;
+  }
+
+  &:before {
+    @apply absolute w-0 z-40 opacity-75;
+    @include theme(bg, okColor);
+    content: '';
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    transition: width 0.5s ease;
+    transition-delay: 0.3s;
+    will-change: width;
+  }
+
+  &.discard:before {
+    @include theme(bg, attentionColor);
+  }
+
+  &:hover {
+    .editorHeader {
+      &.showOk {
+        &:before {
+          @include theme(bg, okColor);
+        }
+
+        .editorHeader-input.active {
+          @include theme(border, okColor);
+        }
+      }
+
+      &.showAttention {
+        &:before {
+          @include theme(bg, attentionColor);
+        }
+
+        .editorHeader-input.active {
+          @include theme(border, attentionColor);
+        }
+      }
+
+      &.showWarning {
+        &:before {
+          @include theme(bg, warningColor);
+        }
+
+        .editorHeader-input.active {
+          @include theme(border, warningColor);
+        }
+      }
+    }
+  }
+
+  &.active {
+    .editorHeader {
+      &.showOk {
+        &:before {
+          @include theme(bg, okColor);
+        }
+
+        .editorHeader-input.active {
+          @include theme(border, okColor);
+        }
+      }
+
+      &.showAttention {
+        &:before {
+          @include theme(bg, attentionColor);
+        }
+
+        .editorHeader-input.active {
+          @include theme(border, attentionColor);
+        }
+      }
+
+      &.showWarning {
+        &:before {
+          @include theme(bg, warningColor);
+        }
+
+        .editorHeader-input.active {
+          @include theme(border, warningColor);
+        }
+      }
+    }
+
+    .editorHeader-caret {
+      transform: rotate(44deg) translateX(1px) translateY(1px);
+    }
+
+    .editorContent {
+      @apply relative flex flex-col pt-25 overflow-hidden;
+      @include theme(bg, editorBg);
+    }
+
+    .editorHeader .editorHeader-input {
+      &:not(.active)::placeholder {
+        @include theme(text, textContrast);
+      }
+    }
+
+    .ScrollbarsCustom-Content {
+      @apply inline-block h-auto !important;
+      @apply .max-w-full;
+    }
+
+    .ScrollbarsCustom-Wrapper {
+      bottom: 0 !important;
+    }
+
+    .ScrollbarsCustom-TrackX {
+      bottom: -10px !important;
+    }
+  }
+
+  &.focused {
+    @apply opacity-100;
+
+    .editorContent {
+      @apply max-h-none;
+    }
+
+    .editorTextarea {
+      @apply max-h-none;
+      padding-left: 37px;
+    }
+
+    .editorHeader:before {
+      @apply opacity-75;
+    }
+
+    .nlab-logic-template-label {
+      @include theme(text, textTemplateLabel);
+    }
+
+    .nlab-logic-template-question {
+      @include theme(text, textTemplateBlue);
+    }
+
+    .nlab-logic-template-line-comment {
+      @include theme(text, textTemplateComment);
+    }
+
+    .nlab-logic-template-anchor {
+      @include theme(text, textTemplateBlueOpacity);
+    }
+
+    .nlab-logic-template-answer {
+      @include theme(text, textTemplateGreen);
+    }
+
+    .nlab-logic-template-add-rubrica {
+      @include theme(text, textTemplateGreenOpacity);
+    }
+
+    .editorActions {
+      .editorActionsBtn {
+        @apply text-orange;
+
+        &.remove {
+          @apply opacity-75;
+          @apply text-red;
+
+          &:hover {
+            @apply opacity-100;
+            @include theme(text, textContrast);
+          }
+        }
+
+        &.discard {
+          @apply text-orange;
+        }
+
+        &.save {
+          @apply text-green;
+        }
+
+        &.state:hover {
+          @include theme(text, textContrast);
+        }
+      }
+    }
+  }
+
+  &.no-lines {
+    .editorTextarea {
+      @apply pl-15;
+    }
+
+    .nlab-logic-editor-line {
+      @apply pl-0;
+
+      &:before {
+        @apply opacity-0;
+      }
+    }
+  }
+
+  &.defined {
+    .editorContent {
+      @apply max-h-none;
+    }
+
+    .editorTextarea {
+      @apply max-h-none;
+    }
+  }
+
+  &.not-saved {
+    &:before {
+      @apply w-full;
+      @include theme(bg, attentionColor);
+      transition-delay: 0s;
+    }
+  }
+
+  &.enabled.focused .editorActionsBtn.state {
+    @apply text-green;
+
+    &:hover {
+      @include theme(text, textContrast);
+    }
+  }
+
+  &.disabled.focused .editorActionsBtn.state {
+    @apply text-orange;
+
+    &:hover {
+      @include theme(text, textContrast);
+    }
+  }
+
+  &:fullscreen {
+    .editorHeader .editorHeader-toggle {
+      @apply cursor-default;
+    }
+
+    .editorContent {
+      @apply max-h-none;
+    }
+
+    .editorDescription {
+      @apply h-full;
+    }
+
+    .editorInner {
+      height: calc(100vh - 76px) !important;
+    }
+
+    .editorTextarea {
+      @apply max-h-none;
+      min-height: calc(100vh - 76px);
+    }
+
+    .editorTools {
+      @apply h-0 mt-20 p-0 overflow-hidden;
+    }
+  }
+
+  &:last-child {
+    @apply mb-0;
+  }
+
+  .editorDescription {
+    @apply absolute z-20 flex flex-col w-full pt-40 px-15 pb-15 border;
+    @include theme(bg, mainSecondary);
+    @include theme(border, editorBg);
+    top: 0;
+    left: 0;
+    height: calc(100% - 50px);
+    transform: translateY(-100%);
+    transition: transform 0.5s ease;
+    will-change: transform;
+
+    &.active {
+      transform: translateY(0);
+    }
+
+    textarea {
+      @apply flex-grow min-h-0 w-full resize-none;
+      @include theme(bg, mainSecondary);
+      outline: none;
+
+      &:focus::placeholder {
+        @apply opacity-0;
+      }
+
+      &::placeholder {
+        transition: opacity 0.3s ease;
+        will-change: opacity;
+      }
+
+      overflow: -moz-scrollbars-none;
+      -ms-overflow-style: none;
+
+      &::-webkit-scrollbar {
+        width: 0 !important;
+      }
+    }
+  }
+
+  .editorDescription-id {
+    @apply mb-5;
+    @include theme(text, miscSecondary);
+
+    span {
+      @apply select-all;
+    }
+  }
+
+  .editorTextarea-wrapper {
+    @apply relative flex w-full overflow-hidden;
+    padding: 1rem;
+  }
+
+  .editorLines {
+    @apply absolute z-10 flex flex-col overflow-hidden;
+    top: 1rem;
+    left: 5px;
+    width: 28px;
+  }
+
+  .editorLines-item {
+    @apply relative leading-normal text-center;
+    @include theme(text, miscSecondary);
+    transition: margin-bottom 0.3s ease;
+    will-change: margin-bottom;
+
+    &.active {
+      margin-bottom: 36px;
+
+      > span,
+      small {
+        @include theme(text, textContrast);
+      }
+
+      .editorComment {
+        @apply h-30 opacity-100;
+      }
+    }
+
+    small {
+      @apply absolute h-full text-md;
+      top: 0;
+      left: 1px;
+    }
+
+    > span {
+      @apply relative block w-full cursor-pointer;
+      transition: color 0.3s ease;
+      will-change: color;
+
+      &:hover {
+        @include theme(text, textContrast);
+      }
+    }
+  }
+
+  .editorComment {
+    @apply absolute z-10 h-0 opacity-0 overflow-hidden;
+    top: calc(100% + 2px);
+    left: -5px;
+    transition: height 0.3s ease, opacity 0.3s ease;
+    will-change: height, opacity;
+  }
+
+  .editorComment-actions {
+    @apply absolute flex items-center;
+    top: 9px;
+    left: 4px;
+  }
+
+  .editorComment-action {
+    margin-right: 3px;
+    transition: color 0.3s ease;
+    will-change: color;
+
+    &:last-child {
+      @apply mr-0;
+    }
+
+    &:hover {
+      @include theme(text, textContrast);
+    }
+  }
+
+  .editorComment-input {
+    @apply w-full h-full border-l border-r;
+    @include theme(bg, mainPrimary);
+    @include theme(border, mainSecondary);
+    padding-left: 36px;
+    padding-right: 14px;
+    outline: none;
+
+    &::placeholder {
+      @include theme(text, miscSecondary);
+      transition: opacity 0.3s ease;
+      will-change: opacity;
+    }
+
+    &:focus {
+      &::placeholder {
+        opacity: 0;
+      }
+    }
+  }
+
+  .editorTextarea {
+    @include theme(bg, editorBg);
+    @apply relative flex-grow flex-shrink-0 px-15 leading-normal;
+    @apply .max-w-full;
+    @apply .whitespace-normal .break-words .break-all;
+    min-height: 110px;
+    max-height: 110px;
+    transition: padding 0.15s ease;
+    will-change: padding;
+
+    &.sm {
+      @apply text-base;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    div {
+      @apply .whitespace-normal .break-words .break-all;
+    }
+
+    span[style] {
+      @apply invisible;
+    }
+
+    mark {
+      @apply relative flex items-center h-0 pl-35 overflow-hidden;
+      @include theme(text, miscSecondary);
+      @include theme(bg, mainPrimary);
+      left: -35px;
+      width: calc(100% + 48px);
+      padding-right: 13px;
+      transition: height 0.3s ease;
+      will-change: height;
+
+      &.active {
+        @apply h-30;
+      }
+    }
+  }
+
+  .editorHighlighted {
+    &.warning {
+      @apply relative;
+    }
+
+    .warning-element {
+      @apply absolute;
+      font-size: 10px;
+    }
+
+    &.blue {
+      @include theme(text, paramColor);
+    }
+
+    &.green {
+      @include theme(text, okColor);
+    }
+
+    &.orange {
+      @include theme(text, attentionColor);
+    }
+
+    &.pink {
+      @include theme(text, categoryColor);
+    }
+  }
+
+  .editorHeader {
+    @apply relative z-30 flex flex-grow items-center pr-10;
+    @include theme(bg, mainSecondary);
+    @include theme(text, textContrast);
+    height: 30px;
+
+    &:before {
+      @apply absolute w-full h-full opacity-0;
+      @include theme(bg, mainSecondary);
+      z-index: 0;
+      content: '';
+      top: 0;
+      left: 0;
+      transition: background 0.3s ease, opacity 0.3s ease;
+      will-change: background, opacity;
+    }
+
+    &:after {
+      @apply absolute rounded-full;
+      content: '';
+      top: 50%;
+      left: 16px;
+      width: 8px;
+      height: 8px;
+      transform: translateY(-50%);
+    }
+
+    &.showOk:after {
+      @apply bg-green;
+    }
+
+    &.showAttention:after {
+      @apply bg-orange;
+    }
+
+    &.showWarning:after {
+      @apply bg-red;
+    }
+
+    .editorHeader-title {
+      @apply relative flex flex-grow flex-row items-center min-w-0 h-full pl-30;
+      user-select: none;
+    }
+
+    .editorHeader-toggle {
+      @apply absolute w-full h-full cursor-pointer;
+      top: 0;
+      left: 0;
+
+      &:hover {
+        ~ .editorHeader-edit {
+          @apply relative opacity-100;
+        }
+      }
+    }
+
+    .editorHeader-caret {
+      @apply flex justify-center m-10 cursor-pointer items-center;
+    }
+
+    .editorHeader-edit {
+      @apply hidden items-center h-full text-sm pr-5;
+      transition: opacity 0.3s ease;
+
+      &:hover {
+        @apply opacity-50;
+      }
+    }
+
+    &:hover {
+      .editorHeader-edit {
+        @apply flex items-center;
+
+        &.active {
+          @apply hidden;
+        }
+      }
+    }
+
+    .editorHeader-input,
+    .editorHeader-span {
+      @apply inline-block w-auto h-full px-10 truncate bg-transparent border outline-none;
+      max-width: 30vw;
+      border-color: transparent;
+      outline: none;
+      transition: margin 0.3s ease, background 0.3s ease, border 0.3s ease;
+      will-change: margin, background, border;
+
+      &.clickable {
+        @apply relative cursor-pointer;
+      }
+
+      &.active {
+        @apply relative;
+        @include theme(bg, mainPrimary);
+        @include theme(border, mainSecondary);
+      }
+
+      &::placeholder {
+        @include theme(text, miscSecondary);
+      }
+    }
+
+    .editorHeader-input {
+      width: 30vw;
+    }
+
+    .editorHeader-span {
+      @apply flex items-center m-0 mr-10 whitespace-no-wrap;
+      max-width: 30vw;
+    }
+
+    .editorHeader-action {
+      @apply flex items-center relative ml-5 p-5 opacity-50;
+      transition: opacity 0.3s ease, color 0.3s ease;
+
+      &:hover {
+        @apply opacity-100;
+      }
+
+      &.action-cancel > svg {
+        @apply relative;
+        top: 1px;
+        font-size: 1em;
+      }
+    }
+
+    .editorHeader-settings {
+      @apply relative flex items-center ml-auto;
+
+      .editorHeader-btn {
+        @apply flex justify-center items-center ml-5;
+        width: 22px;
+        height: 22px;
+        transition: opacity 0.3s ease;
+        will-change: opacity;
+
+        &:hover {
+          @apply opacity-50;
+        }
+
+        &.pinned {
+          transform: rotate(45deg) translateY(1px);
+        }
+      }
+
+      .editorHeader-position {
+        @apply relative z-10 flex flex-col ml-5;
+      }
+
+      .editorHeader-moveBtn {
+        @apply flex justify-center items-center w-15 h-15;
+        transition: box-shadow 0.3s ease;
+        will-change: box-shadow;
+
+        &.disabled {
+          @apply cursor-default opacity-50;
+        }
+
+        &:not(.disabled):hover {
+          box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.4);
+        }
+      }
+    }
+  }
+
+  .editorScrollBtn {
+    @apply absolute z-30 flex justify-center items-center w-20 h-20;
+    @include theme(text, miscSecondary);
+    left: calc(50% - 20px);
+    transition: color 0.3s ease;
+    will-change: color;
+
+    &.scroll-down {
+      top: 0;
+    }
+
+    &.scroll-up {
+      bottom: 30px;
+    }
+
+    &:hover {
+      @include theme(text, textContrast);
+    }
+  }
+
+  .editorLinesBtn {
+    @apply absolute z-10;
+    @include theme(text, miscSecondary);
+    top: 13px;
+    left: 13px;
+    transition: color 0.3s ease;
+    will-change: color;
+
+    &:hover {
+      @include theme(text, textContrast);
+    }
+  }
+
+  .editorTools {
+    @apply relative z-20 flex items-center flex-shrink-0 w-full pl-10 pr-15 border-t;
+    @include theme(bg, editorBg);
+    @include theme(border, borderColor);
+    margin-top: 14px;
+    height: 51px;
+    border-top-width: 0.5px;
+  }
+
+  .editorActions {
+    @apply flex items-center;
+    left: -5px;
+
+    .editorActionsBtnWrapper {
+      @apply relative flex justify-center items-center flex-shrink-0 mr-15;
+    }
+
+    .editorActionsBtn {
+      @apply flex justify-center items-center flex-shrink-0 w-30 h-30;
+      transition: color 0.3s ease, opacity 0.3s ease;
+      will-change: color, opacity;
+
+      &:hover,
+      &.active {
+        @include theme(text, textContrast);
+      }
+    }
+  }
+
+  .editorUpdates {
+    @apply flex flex-col justify-center items-end ml-auto text-sm;
+    @include theme(text, miscSecondary);
+
+    > span {
+      @apply flex items-center text-right;
+
+      svg {
+        @apply mr-5;
+        margin-bottom: 2px;
+      }
+
+      &:first-child {
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+  &.editor_dict .editorActions .editorActionsBtnWrapper {
+    @apply mr-10;
+  }
+
+  .highlight-line-start {
+    @include theme(text, miscSecondary);
+  }
+
+  .highlight-symbols {
+    @include theme(text, categoryColor);
+  }
+
+  .highlight-params {
+    @include theme(text, paramColor);
+
+    > span,
+    > a {
+      @include theme(text, textContrast);
+    }
+
+    > a[contenteditable='false'] {
+      @apply cursor-pointer;
+      transition: opacity 0.3s ease;
+      will-change: opacity;
+
+      &:hover {
+        @apply opacity-50;
+      }
+    }
+  }
+
+  .highlight-forms {
+    @include theme(text, attentionColor);
+  }
+
+  &_basic {
+    @apply relative overflow-hidden;
+
+    .editorContent {
+      @include theme(bg, editorBg);
+    }
+
+    .editorTextarea {
+      background-color: transparent;
+    }
+
+    .editorActions {
+      background-color: transparent;
+    }
+  }
+
+  &_dict {
+    @apply relative h-full overflow-hidden;
+
+    &.active .editorContent {
+      @apply max-h-none;
+    }
+
+    .editorDescription {
+      @apply pt-10;
+    }
+
+    .editorContent {
+      background-color: transparent;
+    }
+
+    .editorFooter {
+      @apply flex items-center;
+    }
+
+    .editorTextarea {
+      background-color: transparent;
+      max-height: unset;
+    }
+
+    .editorActions {
+      padding-top: 0;
+      background-color: transparent;
+    }
+
+    .editorContent {
+      @apply h-full;
+      overflow: visible !important;
+    }
+
+    .editorInner {
+      flex-grow: 1;
+    }
+
+    .editorTextarea-wrapper {
+      @apply flex;
+      min-height: 100%;
+    }
+
+    .editorLines-item > span {
+      @apply cursor-default;
+      transition: none;
+
+      &:hover {
+        @include theme(text, miscSecondary);
+      }
+    }
+  }
+}
+
+.editor-suggestion-container {
+  @apply fixed z-50;
+
+  .measure {
+    @apply absolute;
+    left: -9999px;
+    top: -9999px;
+    white-space: pre;
+  }
+
+  .editor-suggestion-input {
+    @apply bg-transparent;
+    white-space: pre;
+    outline: none;
+
+    &.blue {
+      @include theme(text, paramColor);
+    }
+
+    &.green {
+      @include theme(text, okColor);
+    }
+
+    &.orange {
+      @include theme(text, attentionColor);
+    }
+
+    &.pink {
+      @include theme(text, warningColor);
+    }
+  }
+
+  .suggestions-dropdown {
+    width: fit-content;
+    @include theme(bg, mainPrimary);
+    @include theme(border, attentionColor);
+    margin: 2px;
+    border: 1px solid;
+
+    .dropdown-item {
+      &:hover,
+      &.active {
+        @apply text-theme1-textContrast;
+        @include theme(bg, attentionColor);
+      }
+    }
+  }
+}
+
+.suggestions-not-found-wrapper {
+  @apply p-10 text-center border;
+  @include theme(bg, mainPrimary);
+  @include theme(border, attentionColor);
+}
+
+.suggestions-not-found-add {
+  @apply inline-block;
+  @include theme(bg, okColor);
+  color: #000;
+  padding: 3px;
+}
+
+.suggestions-not-found-add-input {
+  @apply block pr-5;
+  @include theme(border, okColor);
+  background: transparent;
+  border-bottom: 2px solid;
+  outline: none;
+}
+
+.editor-link_dict {
+  @apply cursor-pointer;
+  @include theme(bg, okColor);
+  padding: 1px 2px;
+  color: #000;
+}
+
+/* DRAFT JS */
+
+.DraftEditor-root {
+  @apply .w-full;
+}
+
+.nlab-logic-editor-line {
+  @apply py-5;
+  line-height: 1.5rem;
+
+  span {
+    transition: color 0.1s ease;
+    will-change: color;
+  }
+
+  &[data-line] {
+    @apply relative pl-25;
+
+    &:before {
+      @apply absolute w-30 text-center;
+      @include theme(text, miscSecondary);
+      content: attr(data-line);
+      top: 5px;
+      right: calc(100% - 19px);
+      font-size: 0.9em;
+    }
+  }
+}
+
+.nlab-logic-template-label {
+  @apply mb-15;
+}
+
+.nlab-logic-template-question {
+  + .nlab-logic-template-answer {
+    @apply mt-20;
+  }
+}
+
+.nlab-logic-template-line-comment {
+  @apply mb-15;
+}
+
+.nlab-logic-template-anchor {
+  @apply mb-15;
+}
+
+.nlab-logic-template-add-rubrica {
+  @apply mb-15;
+}
+
+/* DRAFT JS END */
+
+/* purgecss end ignore */
