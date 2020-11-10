@@ -77,11 +77,11 @@ interface BasicEditorState {
   editorState: EditorState
 }
 
-export const prepareText: any = (text: string) => {
-  const escapeHtmlDict = (string: string) => {
-    return string.replace(/<dict/g, '&lt;dict')
-  }
+export const escapeHtmlDict = (string: string) => {
+  return string.replace(/<dict/g, '&lt;dict')
+}
 
+export const prepareText: any = (text: string) => {
   const blocksFromHTML = convertFromHTML(escapeHtmlDict(text))
 
   const state = ContentState.createFromBlockArray(blocksFromHTML.contentBlocks, blocksFromHTML.entityMap)
@@ -256,7 +256,7 @@ export class BasicEditor extends PureComponent<BasicEditorProps, BasicEditorStat
     const contentState = this.state.editorState.getCurrentContent()
     const text = contentState.getPlainText('<div><br/></div> ')
 
-    return text
+    return escapeHtmlDict(text)
   }
 
   handlEditorChange = (editorState: EditorState) => {

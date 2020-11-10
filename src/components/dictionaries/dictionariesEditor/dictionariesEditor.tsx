@@ -1,11 +1,7 @@
 import React, { PureComponent } from 'react'
 import Icon from '../../common/icon'
 
-import {
-  setOpenedDictionaries,
-  closeDictionary,
-  setCustomConfirmConfig,
-} from '../../../store/dispatcher'
+import { setOpenedDictionaries, closeDictionary, setCustomConfirmConfig } from '../../../store/dispatcher'
 import { InView } from 'react-intersection-observer'
 import {
   DICTIONARY_FETCH_QUERY,
@@ -22,7 +18,7 @@ import { notifyWithDelay } from '../../../utils/common'
 import { BaseMutationOptions } from 'react-apollo'
 import { getDictsRefetchData } from '../../../utils/queries'
 import { Editor, EditorState, ContentBlock, DraftHandleValue, getDefaultKeyBinding, KeyBindingUtil } from 'draft-js'
-import { prepareText } from '../../editor/basicEditor/basicEditor'
+import { escapeHtmlDict, prepareText } from '../../editor/basicEditor/basicEditor'
 
 const { hasCommandModifier } = KeyBindingUtil
 
@@ -237,7 +233,7 @@ class DictionariesEditor extends PureComponent<DictionaryEditorProps, Dictionari
           this.discardChanges()
           notifyWithDelay({
             msg: 'Последнее сохранённое состояние восстановлено!',
-            hideAfter: 2000
+            hideAfter: 2000,
           })
         },
         title: 'Востановить последнее сохранненое состояние',
@@ -315,7 +311,7 @@ class DictionariesEditor extends PureComponent<DictionaryEditorProps, Dictionari
     const contentState = this.state.editorState.getCurrentContent()
     const text = contentState.getPlainText('<div><br/></div> ')
 
-    return text
+    return escapeHtmlDict(text)
   }
 
   handlEditorChange = (editorState: EditorState) => {
