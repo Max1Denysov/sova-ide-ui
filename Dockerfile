@@ -4,6 +4,7 @@ RUN mkdir /opt/app
 WORKDIR /opt/app
 
 COPY package.json /opt/app/package.json
+COPY package-lock.json /opt/app/package-lock.json
 
 RUN npm install --silent
 
